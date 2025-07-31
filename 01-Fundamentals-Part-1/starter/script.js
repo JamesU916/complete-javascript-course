@@ -167,7 +167,7 @@ if (BMIMark > BMIJohn) {
 }
 
 
-// 7. Type Conversion & Coercion
+// 8. Type Conversion & Coercion
 
 // Type Conversion
 const inputYear = "1996";
@@ -191,4 +191,175 @@ console.log(n); // will log 10
 
 console.log(2 + 3 + 4 + "5"); // will log 95
 // Type coercion can introduce unexpected bugs so be careful
-*/
+
+
+// 9. Truthy and falsy values
+
+// 5 falsy values: 0, '', undefined, null, NaN // will become false when attempt to convert
+console.log(Boolean(0)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean("James")); // true
+console.log(Boolean({})); // true
+// form of type coercion
+
+const money = 100;
+if (money) {
+  // JS will try to convert to Boolean
+  console.log("Don't spend it all!"); // evokes truthy block
+} else {
+  console.log("You should get a job!");
+}
+
+let height;
+if (height || height === 0) {
+  // prevents it assigning falsy if height is 0 (i.e. valid in this case)
+  console.log("YAY! Height is defined");
+} else {
+  console.log("Height is UNDEFINED"); // evokes falsy block
+}
+
+
+// 9. Equality operators
+
+const age = 18;
+if (age === 18) console.log("You are 18");
+
+console.log(18 === 18); // true
+console.log(18 === 19); // false
+console.log("18" == 18); // true - loose equality
+console.log("18" === 18); // false - strict equality
+
+const favourite = Number(prompt("What's your favourite number?"));
+console.log(favourite);
+console.log(typeof favourite); // will be a string
+
+if (favourite === 27) {
+  // type coercion will convert it to a number with loose equality
+  // but if we convert it to a Number on the input as above it will work
+  console.log("That was a significant age");
+} else if (favourite === 28) {
+  console.log("28 is where it all started to come together");
+} else {
+  console.log("Number is not 27 or 28");
+}
+
+if (favourite !== 27 || favourite !== 28) console.log("Why not 27 or 28?");
+
+
+// 10. Logical Operators & Boolean Values
+const hasDriversLicense = true;
+const hasGoodVision = false;
+
+console.log(hasDriversLicense && hasGoodVision); // false
+console.log(hasDriversLicense || hasGoodVision); // true
+console.log(!hasDriversLicense); // false
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+// if (shouldDrive) {
+//   console.log("You are able to drive");
+// } else {
+//   console.log("Someone else should drive"); // logs this
+// }
+
+const isTired = true;
+
+if (shouldDrive && !isTired) {
+  console.log("You are able to drive");
+} else {
+  console.log("Someone else should drive"); // logs this
+}
+
+// CHALLENGE 3
+const scoreDolphins = (96 + 108 + 89) / 3;
+const scoreKoalas = (88 + 91 + 110) / 3;
+
+if (scoreDolphins > scoreKoalas) {
+  console.log("Dolphins win the trophy");
+} else if (scoreKoalas > scoreDolphins) {
+  console.log("Koalas win the trophy");
+} else {
+  console.log("Both win the trophy");
+}
+
+
+// 11. The switch statement
+
+const day = "Monday";
+
+switch (day) {
+  case "Monday": //day === 'Monday'
+    console.log("Plan course structure");
+    console.log("Go to coding meetup");
+    break; //break is necessary to stop code from continuing to execute
+  case "Tuesday":
+    console.log("Prepare theory videos");
+    break;
+  case "Wednesday":
+  case "Thursday":
+    console.log("Write code examples");
+    break;
+  case "Friday":
+    console.log("Record videos");
+    break;
+  case "Saturday":
+  case "Sunday":
+    console.log("Enjoy the weekend!");
+    break;
+  default:
+    console.log("Not a valid day!");
+}
+
+// same thing with if/else statement
+
+if (day === "Monday") {
+  console.log("Plan course structure");
+  console.log("Go to coding meetup");
+} else if (day === "Tuesday") {
+  console.log("Prepare theory videos");
+} else if (day === "Wednesday" || day === "Thursday") {
+  console.log("Write code examples");
+} else if (day === "Friday") {
+  console.log("Record videos");
+} else if (day === "Saturday" || day === "Sunday") {
+  console.log("Enjoy the weekend!");
+} else {
+  console.log("Not a valid day!");
+}
+
+
+// 12. Statements and expressions
+// 3 + 4 is an expression - produces a value
+// if/else statements are statements - doesn't produce a value - performs actions based on statement
+// can put an expression in a template literal but not a statement
+
+// 13. The Conditional (Ternary) Operator
+
+const age = 28;
+age >= 18
+  ? console.log("I like to drink wine 🍷")
+  : console.log("I like to drink water 💧");
+
+const drink = age >= 18 ? "wine 🍷" : "water 💧";
+console.log(drink);
+
+let drink2;
+if (age >= 18) {
+  drink2 = "wine 🍷";
+} else {
+  drink2 = "water 💧";
+}
+
+console.log(drink2);
+
+console.log(`I like to drink ${age >= 18 ? "wine 🍷" : "water 💧"}`);
+// ^ can put ternary in template literal
+
+// CHALLENGE 4
+const bill = 275;
+const tip = bill >= 50 && bill <= 300 ? 0.15 * bill : 0.2 * bill;
+
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`
+);
+  */
